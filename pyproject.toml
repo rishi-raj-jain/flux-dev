@@ -20,10 +20,7 @@ dependencies = [
   "tokenizers",
   "protobuf",
   "requests",
-  "invisible-watermark",
-  "accelerate",
-  "cv2",
-  "numpy",
+  "invisible-watermark"
 ]
 
 [project.optional-dependencies]
