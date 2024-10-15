@@ -14,6 +14,8 @@ FROM python:3.12 AS runner
 
 WORKDIR /app
 
+RUN apt-get update && apt-get install -y ffmpeg libsm6 libxext6 && rm -rf /var/lib/apt/lists/*
+
 COPY --from=builder /app /app
 
 ENV VIRTUAL_ENV=/app/.venv
