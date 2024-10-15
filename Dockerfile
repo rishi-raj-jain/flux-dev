@@ -17,10 +17,10 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y ffmpeg libsm6 libxext6 && rm -rf /var/lib/apt/lists/*
 
-COPY --from=builder /app/.venv venv
+COPY --from=builder /app/.venv .venv
 COPY app.py app.py
 
-ENV VIRTUAL_ENV=/app/venv
+ENV VIRTUAL_ENV=/app/.venv
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 EXPOSE 8000
