@@ -31,27 +31,27 @@ NSFW_THRESHOLD = 0.85
 @st.cache_resource()
 def get_models(name: str, device: torch.device, offload: bool, is_schnell: bool):
     # NEW
-    print(f"Loading models with the following parameters: name={name}, device={device}, offload={offload}, is_schnell={is_schnell}")
+    st.info(f"Loading models with the following parameters: name={name}, device={device}, offload={offload}, is_schnell={is_schnell}")
     # NEW
     t5 = load_t5(device, max_length=256 if is_schnell else 512)
     # NEW
-    print("Loaded T5 model")
+    st.info("Loaded T5 model")
     # NEW
     clip = load_clip(device)
     # NEW
-    print("Loaded CLIP model")
+    st.info("Loaded CLIP model")
     # NEW
     model = load_flow_model(name, device="cpu" if offload else device)
     # NEW
-    print("Loaded flow model")
+    st.info("Loaded flow model")
     # NEW
     ae = load_ae(name, device="cpu" if offload else device)
     # NEW
-    print("Loaded autoencoder model")
+    st.info("Loaded autoencoder model")
     # NEW
     nsfw_classifier = pipeline("image-classification", model="Falconsai/nsfw_image_detection", device=device)
     # NEW
-    print("Loaded NSFW classifier")
+    st.info("Loaded NSFW classifier")
     # NEW
     return model, ae, t5, clip, nsfw_classifier
 
@@ -79,7 +79,7 @@ def main(
     output_dir: str = "output",
 ):
     # NEW
-    print('HF_TOKEN', os.getenv('HF_TOKEN'))
+    st.info('HF_TOKEN', os.getenv('HF_TOKEN'))
     login(token = os.getenv('HF_TOKEN'))
     # NEW
     torch_device = torch.device(device)
