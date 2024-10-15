@@ -21,7 +21,9 @@ dependencies = [
   "protobuf",
   "requests",
   "invisible-watermark",
-  "accelerate"
+  "accelerate",
+  "cv2",
+  "numpy",
 ]
 
 [project.optional-dependencies]
