@@ -27,10 +27,7 @@ from flux.util import (
 )
 
 NSFW_THRESHOLD = 0.85
-# NEW
-print('HF_TOKEN', os.getenv('HF_TOKEN'))
-login(token = os.getenv('HF_TOKEN'))
-# NEW
+
 @st.cache_resource()
 def get_models(name: str, device: torch.device, offload: bool, is_schnell: bool):
     # NEW
@@ -81,6 +78,10 @@ def main(
     offload: bool = False,
     output_dir: str = "output",
 ):
+    # NEW
+    print('HF_TOKEN', os.getenv('HF_TOKEN'))
+    login(token = os.getenv('HF_TOKEN'))
+    # NEW
     torch_device = torch.device(device)
     names = list(configs.keys())
     name = st.selectbox("Which model to load?", names)
