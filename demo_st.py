@@ -12,8 +12,9 @@ from PIL import ExifTags, Image
 from st_keyup import st_keyup
 from torchvision import transforms
 from transformers import pipeline
+# NEW
 from huggingface_hub import login
-
+# NEW
 from flux.cli import SamplingOptions
 from flux.sampling import denoise, get_noise, get_schedule, prepare, unpack
 from flux.util import (
@@ -26,9 +27,10 @@ from flux.util import (
 )
 
 NSFW_THRESHOLD = 0.85
+# NEW
 print('HF_TOKEN', os.getenv('HF_TOKEN'))
 login(token = os.getenv('HF_TOKEN'))
-
+# NEW
 @st.cache_resource()
 def get_models(name: str, device: torch.device, offload: bool, is_schnell: bool):
     t5 = load_t5(device, max_length=256 if is_schnell else 512)
