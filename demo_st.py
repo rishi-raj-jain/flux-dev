@@ -14,6 +14,7 @@ from torchvision import transforms
 from transformers import pipeline
 # NEW
 from huggingface_hub import login
+from diffusers import DiffusionPipeline
 # NEW
 from flux.cli import SamplingOptions
 from flux.sampling import denoise, get_noise, get_schedule, prepare, unpack
@@ -79,7 +80,6 @@ def main(
     output_dir: str = "output",
 ):
     # NEW
-    st.info(f'HF_TOKEN={os.getenv('HF_TOKEN')}')
     login(token = os.getenv('HF_TOKEN'))
     # NEW
     torch_device = torch.device(device)
