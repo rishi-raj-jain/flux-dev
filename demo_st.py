@@ -79,7 +79,7 @@ def main(
     output_dir: str = "output",
 ):
     # NEW
-    st.info('HF_TOKEN', os.getenv('HF_TOKEN'))
+    st.info(f'HF_TOKEN={os.getenv('HF_TOKEN')}')
     login(token = os.getenv('HF_TOKEN'))
     # NEW
     torch_device = torch.device(device)
