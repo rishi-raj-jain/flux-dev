@@ -1,4 +1,4 @@
-FROM python:3.9 AS builder
+FROM python:3.12 AS builder
 
 WORKDIR /app
 
@@ -10,7 +10,7 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 RUN pip install -e ".[all]"
 
-FROM python:3.9 AS runner
+FROM python:3.12 AS runner
 
 WORKDIR /app
 
