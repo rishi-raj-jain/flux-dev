@@ -12,6 +12,7 @@ from PIL import ExifTags, Image
 from st_keyup import st_keyup
 from torchvision import transforms
 from transformers import pipeline
+from huggingface_hub import login
 
 from flux.cli import SamplingOptions
 from flux.sampling import denoise, get_noise, get_schedule, prepare, unpack
@@ -25,7 +26,8 @@ from flux.util import (
 )
 
 NSFW_THRESHOLD = 0.85
-
+print('HF_TOKEN', os.getenv('HF_TOKEN'))
+login(token = os.getenv('HF_TOKEN'))
 
 @st.cache_resource()
 def get_models(name: str, device: torch.device, offload: bool, is_schnell: bool):
