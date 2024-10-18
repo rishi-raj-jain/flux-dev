@@ -4,6 +4,7 @@ WORKDIR /app
 
 COPY app.py .
 COPY requirements.txt .
+COPY load.py .
 
 RUN python3 -m venv .venv
 ENV VIRTUAL_ENV=/app/.venv
