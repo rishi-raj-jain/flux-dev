@@ -30,4 +30,5 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 EXPOSE 8000
 
+CMD ["python", "./load.py"]
 CMD ["streamlit", "run", "./app.py", "--server.port", "8000"]
