@@ -15,7 +15,6 @@ FROM python:3.12 AS runner
 WORKDIR /app
 
 COPY --from=builder app.py app.py
-COPY --from=builder load.py load.py
 
 RUN apt-get update 
 RUN apt-get install -y libsm6 libxext6 git git-lfs 
