@@ -17,6 +17,7 @@ WORKDIR /app
 
 COPY --from=builder /app/.venv .venv
 COPY app.py app.py
+COPY load.py load.py
 
 RUN apt-get update 
 RUN apt-get install -y libsm6 libxext6 git git-lfs 
