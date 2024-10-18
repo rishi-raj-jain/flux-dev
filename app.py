@@ -1,9 +1,6 @@
-import os
 import streamlit as st
-from huggingface_hub import login
 from diffusers import DiffusionPipeline
 
-login(token=os.getenv('HF_TOKEN'))
 pipe = DiffusionPipeline.from_pretrained("./FLUX.1-dev")
 
 st.title("AI Image Generation with FLUX.1-dev")
