@@ -6,6 +6,8 @@ COPY app.py .
 COPY load.py .
 COPY requirements.txt .
 RUN pip install -r requirements.txt
+
+ARG HF_TOKEN="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"
 RUN python3 ./load.py
 
 FROM python:3.12 AS runner
