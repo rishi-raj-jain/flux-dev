@@ -2,7 +2,7 @@ FROM python:3.12 AS runner
 
 WORKDIR /app
 
-COPY app.py requirements.txt .
+COPY app.py requirements.txt load.py .
 
 RUN pip install -r requirements.txt
 
