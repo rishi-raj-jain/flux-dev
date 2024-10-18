@@ -12,4 +12,7 @@ RUN rm -rf /var/lib/apt/lists/*
 
 EXPOSE 8000
 
+RUN python3 load.py
+RUN ls
+
 CMD ["streamlit", "run", "./app.py", "--server.port", "8000"]
