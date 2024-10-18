@@ -3,8 +3,9 @@ import streamlit as st
 from diffusers import DiffusionPipeline
 from huggingface_hub import login, snapshot_download
 
-login(token=os.getenv('HF_TOKEN'))
-snapshot_download(repo_id="black-forest-labs/FLUX.1-dev", cache_dir="./FLUX_1_dev")
+if not os.path.exists("./FLUX_1_dev/"):
+    login(token=os.getenv('HF_TOKEN'))
+    snapshot_download(repo_id="black-forest-labs/FLUX.1-dev", cache_dir="./FLUX_1_dev")
 
 pipe = DiffusionPipeline.from_pretrained("black-forest-labs/FLUX.1-dev", cache_dir="FLUX_1_dev", local_files_only=True)
 
