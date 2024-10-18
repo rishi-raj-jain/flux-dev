@@ -21,9 +21,9 @@ COPY app.py app.py
 RUN apt-get update 
 RUN apt-get install -y libsm6 libxext6 git git-lfs 
 RUN rm -rf /var/lib/apt/lists/*
-RUN git lfs install
-ARG HF_TOKEN
-RUN git clone https://RishiRajJain:$HF_TOKEN@huggingface.co/black-forest-labs/FLUX.1-dev
+# RUN git lfs install
+# ARG HF_TOKEN
+# RUN git clone https://RishiRajJain:$HF_TOKEN@huggingface.co/black-forest-labs/FLUX.1-dev
 
 ENV VIRTUAL_ENV=/app/.venv
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
