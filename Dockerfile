@@ -6,8 +6,6 @@ COPY app.py requirements.txt .
 
 RUN pip install -r requirements.txt
 
-ARG HF_TOKEN="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"
-
 RUN apt-get update 
 RUN apt-get install -y libsm6 libxext6 git git-lfs 
 RUN rm -rf /var/lib/apt/lists/*
