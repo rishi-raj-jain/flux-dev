@@ -1,16 +1,8 @@
-FROM python:3.12 AS builder
-
-WORKDIR /app
-
-COPY app.py .
-COPY load.py .
-COPY requirements.txt .
-
 FROM python:3.12 AS runner
 
 WORKDIR /app
 
-COPY --from=builder app.py load.py requirements.txt
+COPY app.py load.py requirements.txt .
 
 RUN pip install -r requirements.txt
 
