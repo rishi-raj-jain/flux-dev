@@ -1,4 +1,5 @@
 import os
+import torch
 import streamlit as st
 from diffusers import DiffusionPipeline
 from huggingface_hub import login, snapshot_download
@@ -16,7 +17,7 @@ if st.button("Load Model"):
 if st.button("Generate Image"):
     with st.spinner("Generating image..."):
         try:
-            pipe = DiffusionPipeline.from_pretrained("black-forest-labs/FLUX.1-dev", cache_dir="./FLUX_1_dev")
+            pipe = DiffusionPipeline.from_pretrained("black-forest-labs/FLUX.1-dev", torch_dtype=torch.float16, use_safetensors=True, cache_dir="./FLUX_1_dev").to("cuda")
             images = pipe(prompt=prompt, num_inference_steps=num_inference_steps).images
             for i, image in enumerate(images):
                 st.image(image, caption=f"{prompt} - Image {i+1}")
