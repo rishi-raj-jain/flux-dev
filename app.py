@@ -10,7 +10,7 @@ prompt = st.text_input("Enter your prompt:", "Astronaut in a jungle, cold color 
 
 if st.button("Load Model"):
     with st.spinner("Downloading model..."):
-        snapshot_download(repo_id="black-forest-labs/FLUX.1-dev", cache_dir="./FLUX_1_dev")
+        snapshot_download(repo_id="black-forest-labs/FLUX.1-dev", local_dir="./FLUX_1_dev")
 
 if st.button("Generate Image"):
     with st.spinner("Generating image..."):
