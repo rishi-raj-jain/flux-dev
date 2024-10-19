@@ -7,7 +7,7 @@ COPY app.py requirements.txt .
 RUN pip install -r requirements.txt --root-user-action=ignore
 
 RUN apt-get update 
-RUN apt-get install -y libsm6 libxext6 git git-lfs 
+RUN apt-get install -y libsm6 libxext6 git git-lfs nvidia-cuda-toolkit
 RUN rm -rf /var/lib/apt/lists/*
 
 EXPOSE 8000
