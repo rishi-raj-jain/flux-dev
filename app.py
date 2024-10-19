@@ -16,7 +16,7 @@ if st.button("Generate Image"):
     with st.spinner("Generating image..."):
         try:
             pipe = DiffusionPipeline.from_pretrained("black-forest-labs/FLUX.1-schnell", cache_dir="./FLUX_1_dev")
-            image = pipe(prompt).images[0]
+            image = pipe(prompt, num_inference_steps=10).images[0]
             st.image(image, caption=prompt)
         except Exception as e:
             st.error(f"An error occurred: {e}")
