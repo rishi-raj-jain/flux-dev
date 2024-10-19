@@ -10,12 +10,12 @@ prompt = st.text_input("Enter your prompt:", "Astronaut in a jungle, cold color 
 
 if st.button("Load Model"):
     with st.spinner("Downloading model..."):
-        snapshot_download(repo_id="black-forest-labs/FLUX.1-dev", local_dir="./FLUX_1_dev")
+        snapshot_download(repo_id="black-forest-labs/FLUX.1-dev", cache_dir="./FLUX_1_dev")
 
 if st.button("Generate Image"):
     with st.spinner("Generating image..."):
         try:
-            pipe = DiffusionPipeline.from_pretrained("black-forest-labs/FLUX.1-dev", cache_dir="FLUX_1_dev", local_files_only=True)
+            pipe = DiffusionPipeline.from_pretrained("black-forest-labs/FLUX.1-dev", cache_dir="./FLUX_1_dev")
             image = pipe(prompt).images[0]
             st.image(image, caption=prompt)
         except Exception as e:
