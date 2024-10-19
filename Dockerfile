@@ -12,7 +12,7 @@ RUN rm -rf /var/lib/apt/lists/*
 
 EXPOSE 8000
 
-ARG HF_TOKEN
-RUN python3 load.py
+# RUN python3 load.py
 
+ARG HF_TOKEN
 CMD ["streamlit", "run", "./app.py", "--server.port", "8000"]
