@@ -7,6 +7,7 @@ login(token=os.getenv('HF_TOKEN'))
 streamlit.title("AI Image Generation with FLUX.1-dev")
 num_width = streamlit.number_input("Enter number of width:", min_value=1, value=256)
 num_height = streamlit.number_input("Enter number of height:", min_value=1, value=256)
+num_images = streamlit.number_input("Enter number of images:", min_value=1, value=3)
 num_inference_steps = streamlit.number_input("Enter number of inference steps:", min_value=1, value=3)
 prompt = streamlit.text_input("Enter your prompt:", "Astronaut in a jungle, cold color palette, muted colors, detailed, 8k")
 
@@ -15,6 +16,6 @@ if streamlit.button("Load Model"):
 
 if streamlit.button("Generate Image"):
     pipe = FluxPipeline.from_pretrained("black-forest-labs/FLUX.1-dev", torch_dtype=torch.bfloat16, cache_dir="./FLUX_1_dev")
-    images = pipe(prompt=prompt, num_inference_steps=num_inference_steps, height=num_height, width=num_width).images
+    images = pipe(prompt=prompt, num_inference_steps=num_inference_steps, height=num_height, width=num_width, num_images=num_images).images
     for i, image in enumerate(images):
         streamlit.image(image, caption=prompt)
