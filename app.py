@@ -1,5 +1,4 @@
 import os
-import torch
 import streamlit as st
 from diffusers import DiffusionPipeline
 from huggingface_hub import login, snapshot_download
@@ -20,7 +19,7 @@ if st.button("Generate Image"):
             image_ratio = st.selectbox("Select image ratio:", ["1:1", "16:9", "4:3"])
             num_images = st.number_input("Enter number of images to generate:", min_value=1, value=1)
             num_iterations = st.number_input("Enter number of iterations:", min_value=1, value=1)
-            pipe = DiffusionPipeline.from_pretrained("black-forest-labs/FLUX.1-dev", torch_dtype=torch.bfloat16, cache_dir="./FLUX_1_dev")
+            pipe = DiffusionPipeline.from_pretrained("black-forest-labs/FLUX.1-dev", cache_dir="./FLUX_1_dev")
             images = pipe(prompt=prompt, num_inference_steps=num_inference_steps, height=image_ratio, width=image_ratio, num_images=num_images, num_iterations=num_iterations).images
             for i, image in enumerate(images):
                 st.image(image, caption=f"{prompt} - Image {i+1}")
