@@ -16,6 +16,6 @@ if streamlit.button("Load Model"):
 
 if streamlit.button("Generate Image"):
     pipe = FluxPipeline.from_pretrained("black-forest-labs/FLUX.1-dev", torch_dtype=torch.bfloat16, cache_dir="./FLUX_1_dev")
-    images = pipe(prompt=prompt, num_inference_steps=num_inference_steps, height=num_height, width=num_width, num_images=num_images).images
+    images = pipe(prompt=prompt, num_inference_steps=num_inference_steps, height=num_height, width=num_width, num_images_per_prompt=num_images).images
     for i, image in enumerate(images):
         streamlit.image(image, caption=prompt)
