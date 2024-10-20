@@ -13,3 +13,4 @@ protobuf
 requests
 invisible-watermark
 accelerate
+peft
