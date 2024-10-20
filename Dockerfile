@@ -8,7 +8,7 @@ RUN pip install -r requirements.txt --root-user-action=ignore
 RUN pip install --pre torch --index-url https://download.pytorch.org/whl/nightly/cu121 --root-user-action=ignore
 
 RUN apt-get update 
-RUN apt-get install -y libsm6 libxext6 git git-lfs cuda-toolkit
+RUN apt-get install -y libsm6 libxext6 git git-lfs
 RUN rm -rf /var/lib/apt/lists/*
 
 EXPOSE 8000
